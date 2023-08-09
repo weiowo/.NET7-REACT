@@ -14,5 +14,4 @@ namespace Project3.Model
         public bool isSuccess { get; set; }
         public string message { get; set; }
     }
-
 }

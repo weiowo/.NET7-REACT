@@ -7,21 +7,36 @@ function SignUp() {
     const [role, setRole] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("");
 
-
     useEffect(() => {
-        fetch('api/Auth/SignUp', {
-            method: "POST",
-            body: JSON.stringify({
-                userName: "Test",
-                password: "123",
-                confirmPassword: "123",
-                role: "hey",
-                isActive:1
+        //fetch('api/auth/SignUp', {
+        //    method: "POST",
+        //    body: JSON.stringify({
+        //        userName: "Test",
+        //        password: "123",
+        //        confirmPassword: "123",
+        //        role: "hey",
+        //        isActive:1
 
-            }),
-        }).then((res) => res.json())
-        .then((data) => console.log(data))
-    },[])
+        //    }),
+        //}).then((res) => res.json())
+        //    .then((data) => console.log(data))
+
+        async function fetchData() {
+            try {
+                const response = await fetch("cities"); // API URL
+                const data = await response.json();
+                console.log(data);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        }
+
+        fetchData();
+    }, [])
+
+    function signUp() {
+
+    }
 
 
     return (

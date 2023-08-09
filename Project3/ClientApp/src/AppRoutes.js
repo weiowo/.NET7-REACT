@@ -1,7 +1,9 @@
 import { Counter } from "./components/Counter";
 import { FetchData } from "./components/FetchData";
 import { Home } from "./components/Home";
-import  SignUp  from "./components/SignUp"
+import SignUp from "./components/SignUp"
+import Restaurant from "./components/Restaurant"
+
 
 const AppRoutes = [
   {
@@ -19,6 +21,10 @@ const AppRoutes = [
     {
         path: '/signup',
         element: <SignUp />
+    },
+    {
+        path: '/restaurant-system',
+        element: <Restaurant />
     }
 
 ];

@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Project3.DataAccessLayer;
 using Project3.Model;
 
 namespace Project3.Controllers
 {
-    [Route("api/[controller]/[Action]")]
     [ApiController]
+    [EnableCors()]
+    [Route("[controller]/[Action]")]
     public class AuthController : ControllerBase
     {
         public readonly IAuth _auth;

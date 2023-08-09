@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddScoped<IAuth, Auth>();
+builder.Services.AddScoped<IRestaurant, Restaurant>();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
@@ -22,6 +23,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
+app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+
 app.UseSwaggerUI(options =>
 {
     app.UseSwagger();
@@ -32,10 +35,16 @@ app.UseSwaggerUI(options =>
     }
 });
 
+//app.MapControllerRoute(
+//    name: "default",
+//    pattern: "{controller}/{action=Index}/{id?}");
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller}/{action=Index}/{id?}");
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller}/{action=Index}/{id?}");
+});
 
 app.MapFallbackToFile("index.html");
 
